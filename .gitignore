@@ -1,0 +1,26 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+
+# --- Virtual environments ---
+.venv/
+venv/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- VS Code ---
+.vscode/
+
+# --- Data & outputs (keep big stuff out of git) ---
+data/
+reports/
+outputs/
+
+# --- OS junk ---
+Thumbs.db
+.DS_Store
+
+
+# git add .gitignore reviewdata.py Test.py
+# git commit -m "Initial project setup and data sampling pipeline"
