@@ -24,3 +24,5 @@ Thumbs.db
 
 # git add .gitignore reviewdata.py Test.py
 # git commit -m "Initial project setup and data sampling pipeline"
+
+*.code-workspace
