@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChillVest &mdash; For HSE & Safety Leaders | Duralogic</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0a2342; --blue: #1a4a7a; --mid: #2563a8; --light-blue: #7ab3e0;
+    --teal: #4fc3a1; --amber: #f59e0b; --bg: #f0f4f8; --text: #1a1a2e; --muted: #64748b;
+  }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+         background: var(--bg); color: var(--text); line-height: 1.6; }
+  .header { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+             color: white; padding: 40px 24px 30px; }
+  .header-inner { max-width: 860px; margin: 0 auto; }
+  .brand-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+                  color: var(--light-blue); margin-bottom: 10px; }
+  .header h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+  .header h1 span { color: var(--teal); }
+  .edition { display: inline-block; margin-top: 10px; background: rgba(79,195,161,0.15);
+              border: 1px solid var(--teal); border-radius: 6px; padding: 4px 14px;
+              font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); }
+  .tagline { margin-top: 14px; font-size: 15px; color: #b8d4ef; max-width: 560px; }
+  .cert-strip { background: var(--navy); padding: 10px 24px; }
+  .cert-strip-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; }
+  .cert-item { font-size: 11px; color: var(--light-blue); letter-spacing: 1px;
+                text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+  .cert-item .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+  .page { max-width: 860px; margin: 0 auto; padding: 36px 24px 64px; }
+  .section-title { font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
+                    color: var(--mid); font-weight: 700; margin: 36px 0 14px; }
+  .intro-card { background: white; border-radius: 10px; padding: 26px 28px;
+                 box-shadow: 0 1px 4px rgba(10,35,66,0.08); }
+  .intro-card h2 { font-size: 22px; color: var(--navy); margin-bottom: 10px; }
+  .video-card { display: flex; align-items: center; gap: 20px; background:
+                 linear-gradient(135deg, var(--navy) 0%, var(--mid) 100%); border-radius: 10px;
+                 padding: 24px 28px; margin-top: 24px; text-decoration: none;
+                 transition: transform 0.15s ease; }
+  .video-card:hover { transform: translateY(-2px); }
+  .play-btn { width: 58px; height: 58px; border-radius: 50%; background: var(--teal);
+               display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .play-btn::after { content: ''; border-left: 18px solid var(--navy);
+                      border-top: 11px solid transparent; border-bottom: 11px solid transparent;
+                      margin-left: 5px; }
+  .video-card h3 { color: white; font-size: 16px; margin-bottom: 4px; }
+  .video-card p { color: #b8d4ef; font-size: 13px; }
+  .img-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+  .img-card { flex: 1; min-width: 260px; background: white; border-radius: 10px;
+               overflow: hidden; box-shadow: 0 1px 4px rgba(10,35,66,0.08); }
+  .img-card img { width: 100%; display: block; }
+  .img-card p { font-size: 12px; color: var(--muted); padding: 10px 14px; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px;
+           overflow: hidden; box-shadow: 0 1px 4px rgba(10,35,66,0.08); }
+  td { padding: 11px 16px; font-size: 14px; border-bottom: 1px solid #e8eef4;
+        vertical-align: top; }
+  td:first-child { font-weight: 700; color: var(--navy); width: 180px; }
+  tr:last-child td { border-bottom: none; }
+  ul.values { background: white; border-radius: 10px; padding: 20px 28px 20px 46px;
+               box-shadow: 0 1px 4px rgba(10,35,66,0.08); }
+  ul.values li { font-size: 14px; padding: 6px 0; }
+  ul.values li::marker { color: var(--teal); }
+  .expo-strip { display: flex; gap: 14px; flex-wrap: wrap; }
+  .expo-card { flex: 1; min-width: 220px; background: white; border-left: 4px solid var(--teal);
+                border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 4px rgba(10,35,66,0.08); }
+  .expo-card .status { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+                        color: var(--teal); font-weight: 700; }
+  .expo-card .name { font-size: 13px; color: var(--text); margin-top: 3px; }
+  .cta { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+          border-radius: 10px; padding: 32px 28px; margin-top: 40px; text-align: center; }
+  .cta h2 { color: white; font-size: 22px; margin-bottom: 8px; }
+  .cta p { color: #b8d4ef; font-size: 14px; margin-bottom: 18px; }
+  .cta a.button { display: inline-block; background: var(--teal); color: var(--navy);
+                   font-weight: 700; font-size: 15px; padding: 13px 34px; border-radius: 8px;
+                   text-decoration: none; }
+  .contact { margin-top: 22px; font-size: 13px; color: #b8d4ef; line-height: 1.7; }
+  .contact a { color: var(--teal); text-decoration: none; }
+  .footer { text-align: center; font-size: 11px; color: var(--muted); padding: 18px; }
+</style>
+</head>
+<body>
+
+<div class="header"><div class="header-inner">
+  <div class="brand-label">Duralogic (Holding) Ltd</div>
+  <h1>Chill<span>Vest</span></h1>
+  <div class="edition">For HSE &amp; Safety Leaders</div>
+  <p class="tagline">Keep field crews safe and productive through peak heat &mdash; all-day core cooling without ice, hoses, or freezer cycles.</p>
+</div></div>
+
+<div class="cert-strip"><div class="cert-strip-inner">
+  <div class="cert-item"><span class="dot"></span>CE Marked (EMC)</div>
+  <div class="cert-item"><span class="dot"></span>RoHS Certified</div>
+  <div class="cert-item"><span class="dot"></span>MSDS &mdash; GHS / REACH</div>
+  <div class="cert-item"><span class="dot"></span>Model ChillVest-C01</div>
+</div></div>
+
+<div class="page">
+
+  <div class="intro-card">
+    <h2>Heat Stress Is a Safety Metric You Can Move</h2>
+    <p>Heat incidents drive recordables, lost hours, and early shift stops. ChillVest keeps a worker's core temperature in the safe range even at 100&deg;F+ by holding cold gel cells against the body and swapping in a fresh ColdBank when needed &mdash; no freezer trips mid-shift, no soaked clothing, no downtime. Field teams stay on task through the hottest part of the day.</p>
+  </div>
+
+  <a class="video-card" href="https://drive.google.com/file/d/1yKCWeUDbsyA_6mFEs7U-3kfguiNkogm5/view" target="_blank" rel="noopener">
+    <div class="play-btn"></div>
+    <div>
+      <h3>Watch ChillVest in Action &mdash; Short Product Demo</h3>
+      <p>Vest operation, ColdBank setup, and real-world wear. Click to play.</p>
+    </div>
+  </a>
+
+  <div class="section-title">Product</div>
+  <div class="img-row">
+    <div class="img-card"><img src="img/vest_front_back.jpg" alt="ChillVest worn — front and back. Total weight 1.3 kg / 2.85 lb."><p>ChillVest worn — front and back. Total weight 1.3 kg / 2.85 lb.</p></div>
+    <div class="img-card"><img src="img/vest_weight.jpg" alt="Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration."><p>Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration.</p></div>
+  </div>
+
+  <div class="section-title">Key Specifications</div>
+  <table>
+    <tr><td>Model</td><td>ChillVest-C01</td></tr>
+    <tr><td>Weight (worn)</td><td>1.3&ndash;1.4 kg / 2.85&ndash;3.0 lb</td></tr>
+    <tr><td>Cooling system</td><td>Swappable ColdBank gel cells &mdash; CB2026 coolant (sodium polyacrylate + propylene glycol)</td></tr>
+    <tr><td>Runtime</td><td>All-day cooling via ColdBank swap &mdash; no 2&ndash;3 hour re-freeze cycle</td></tr>
+    <tr><td>Airflow unit</td><td>DC 5V motor, USB-rechargeable, low noise</td></tr>
+    <tr><td>Material safety</td><td>Non-toxic, food-grade ingredients; non-flammable (flash point &gt;100&deg;C); not on California Prop 65 list</td></tr>
+    <tr><td>Certifications</td><td>CE (EMC Directive 2014/30/EU) &middot; RoHS 2011/65/EU &middot; MSDS per GHS / REACH</td></tr>
+    <tr><td>Manufacturer</td><td>Duralogic (Holding) Ltd &mdash; US representative in Phoenix, AZ</td></tr>
+  </table>
+
+  <div class="section-title">Why HSE Teams Pick ChillVest</div>
+  <ul class="values">
+    <li>All-day cooling: swappable ColdBank vs. phase-change vests that quit after 2&ndash;3 hours and need a freezer</li>
+    <li>3 lb worn weight &mdash; doesn't interfere with harnesses, FR clothing, or tools</li>
+    <li>No dripping ice or hoses; workers stay dry and presentable</li>
+    <li>Quiet USB-rechargeable airflow unit for enclosed or customer-facing work</li>
+    <li>Free evaluation sample program for HSE pilot teams</li>
+  </ul>
+
+  <div class="section-title">Where You Can Find Us</div>
+  <div class="expo-strip">
+    <div class="expo-card"><div class="status">Exhibited</div><div class="name">Osaka Expo 2025</div></div>
+    <div class="expo-card"><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN</div></div>
+    <div class="expo-card"><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div>
+  </div>
+
+  <div class="cta">
+    <h2>Request an Evaluation Sample</h2>
+    <p>Tell us about your team and use case &mdash; samples and documentation ship promptly.</p>
+    <a class="button" href="https://docs.google.com/forms/d/1xP78a-Gph2JwS-bNTbZkW42qcwMo9A8t8uYNvN8mjto/viewform" target="_blank" rel="noopener">Request a Sample</a>
+    <div class="contact">
+      Edward Wu &middot; Global Representative | Duralogic (Holding) Ltd<br>
+      Phoenix, AZ &middot; USA &middot; Mobile: +1 (469) 515-2507<br>
+      <a href="mailto:edward.duralogic@gmail.com">edward.duralogic@gmail.com</a> &middot;
+      <a href="https://www.duranheat.com">www.duranheat.com</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">&copy; 2026 Duralogic (Holding) Ltd &mdash; ChillVest&trade; Personal Cooling System</div>
+
+</body>
+</html>
