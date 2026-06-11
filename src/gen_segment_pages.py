@@ -46,7 +46,7 @@ SPECS = [
 
 EXPOS = [
     ("Osaka Expo 2025", "Exhibited"),
-    ("NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN", "Exhibiting"),
+    ("NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409", "Exhibiting"),
     ("TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan", "Exhibiting"),
 ]
 
@@ -129,7 +129,7 @@ SEGMENTS = {
             "Clear differentiation: all-day swappable cooling vs. 2&ndash;3 hour PCM re-freeze cycles",
             "Certified and documented: CE (EMC), RoHS, MSDS &mdash; clean supplier onboarding",
             "Factory-direct wholesale pricing with US representation in Phoenix, AZ",
-            "Meet us at NSC Safety Congress &amp; Expo 2026 in Indianapolis (Sept 14&ndash;16)",
+            "Meet us at NSC Safety Congress &amp; Expo 2026 in Indianapolis (Sept 14&ndash;16, Booth #409)",
             "Complementary to FR workwear lines &mdash; bundling opportunity, not channel conflict",
         ],
         "cta_label": "Request Sample &amp; Wholesale Pricing",
