@@ -109,10 +109,13 @@
                 border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 6px rgba(10,35,66,0.05);
                 border-top: 1px solid #e2eaf4; border-right: 1px solid #e2eaf4;
                 border-bottom: 1px solid #e2eaf4; }
+  .expo-card { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .expo-card .status { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }
   .expo-card .name { font-size: 13px; color: var(--text); margin-top: 3px; }
-  .expo-photo { max-width: 440px; margin: 18px auto 0; }
+  .expo-thumb { flex-shrink: 0; }
+  .expo-thumb img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px;
+                     display: block; border: 1px solid #e2eaf4; }
   .cta { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
           border-radius: 12px; padding: 32px 28px; margin-top: 40px; text-align: center; }
   .cta h2 { color: white; font-size: 22px; margin-bottom: 8px; }
@@ -234,13 +237,9 @@
 
   <div class="section-title">Where You Can Find Us</div>
   <div class="expo-strip">
-    <div class="expo-card"><div class="status">Exhibited</div><div class="name">Osaka Expo 2025</div></div>
-    <div class="expo-card"><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409</div></div>
-    <div class="expo-card"><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div>
-  </div>
-  <div class="img-card expo-photo">
-    <img src="img/osaka_expo_2025.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2025, photographed during expo preparation.">
-    <p>Duralogic booth K1-17 at Osaka Expo 2025, photographed during expo preparation.</p>
+    <div class="expo-card"><div><div class="status">Exhibited</div><div class="name">Osaka Expo 2026</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."><img src="img/osaka_expo_2026.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."></a></div>
+    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409</div></div></div>
+    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div></div>
   </div>
 
   <div class="cta">

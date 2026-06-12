@@ -35,8 +35,8 @@ IMAGES = [
 ]
 
 EXPO_PHOTO = (
-    ROOT / "data" / "output" / "osaka_expo_enhanced.jpg", "osaka_expo_2025.jpg",
-    "Duralogic booth K1-17 at Osaka Expo 2025, photographed during expo preparation.",
+    ROOT / "data" / "output" / "osaka_expo_enhanced.jpg", "osaka_expo_2026.jpg",
+    "Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation.",
 )
 
 HOW_IT_WORKS = [
@@ -97,10 +97,11 @@ SELLING_POINTS = [
 ]
 
 EXPOS = [
-    ("Osaka Expo 2025", "Exhibited"),
+    # (name, status, has_photo)
+    ("Osaka Expo 2026", "Exhibited", True),
     ("NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN "
-     "&middot; Booth #409", "Exhibiting"),
-    ("TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan", "Exhibiting"),
+     "&middot; Booth #409", "Exhibiting", False),
+    ("TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan", "Exhibiting", False),
 ]
 
 SEGMENTS = {
@@ -320,10 +321,13 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
                 border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 6px rgba(10,35,66,0.05);
                 border-top: 1px solid #e2eaf4; border-right: 1px solid #e2eaf4;
                 border-bottom: 1px solid #e2eaf4; }}
+  .expo-card {{ display: flex; align-items: center; justify-content: space-between; gap: 12px; }}
   .expo-card .status {{ font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }}
   .expo-card .name {{ font-size: 13px; color: var(--text); margin-top: 3px; }}
-  .expo-photo {{ max-width: 440px; margin: 18px auto 0; }}
+  .expo-thumb {{ flex-shrink: 0; }}
+  .expo-thumb img {{ width: 64px; height: 64px; object-fit: cover; border-radius: 6px;
+                     display: block; border: 1px solid #e2eaf4; }}
   .cta {{ background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
           border-radius: 12px; padding: 32px 28px; margin-top: 40px; text-align: center; }}
   .cta h2 {{ color: white; font-size: 22px; margin-bottom: 8px; }}
@@ -422,10 +426,6 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <div class="expo-strip">
 {expo_cards}
   </div>
-  <div class="img-card expo-photo">
-    <img src="img/{expo_photo_name}" alt="{expo_photo_caption}">
-    <p>{expo_photo_caption}</p>
-  </div>
 
   <div class="cta">
     <h2>{cta_label}</h2>
@@ -497,11 +497,21 @@ def build_point_cards():
 
 
 def build_expo_cards():
-    return "\n".join(
-        f'    <div class="expo-card"><div class="status">{status}</div>'
-        f'<div class="name">{name}</div></div>'
-        for name, status in EXPOS
-    )
+    _, photo_name, photo_caption = EXPO_PHOTO
+    cards = []
+    for name, status, has_photo in EXPOS:
+        thumb = ""
+        if has_photo:
+            thumb = (
+                f'<a class="expo-thumb" href="img/{photo_name}" target="_blank" '
+                f'rel="noopener" title="{photo_caption}">'
+                f'<img src="img/{photo_name}" alt="{photo_caption}"></a>'
+            )
+        cards.append(
+            f'    <div class="expo-card"><div><div class="status">{status}</div>'
+            f'<div class="name">{name}</div></div>{thumb}</div>'
+        )
+    return "\n".join(cards)
 
 
 def render_page(content):
@@ -521,8 +531,6 @@ def render_page(content):
         cert_rows=build_cert_rows(),
         point_cards=build_point_cards(),
         expo_cards=build_expo_cards(),
-        expo_photo_name=EXPO_PHOTO[1],
-        expo_photo_caption=EXPO_PHOTO[2],
         video_url=VIDEO_URL,
         form_url=FORM_URL,
     )
