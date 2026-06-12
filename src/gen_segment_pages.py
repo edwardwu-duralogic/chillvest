@@ -34,6 +34,11 @@ IMAGES = [
      "Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration."),
 ]
 
+EXPO_PHOTO = (
+    ROOT / "data" / "output" / "osaka_expo_enhanced.jpg", "osaka_expo_2025.jpg",
+    "Duralogic booth K1-17 at Osaka Expo 2025, photographed during expo preparation.",
+)
+
 HOW_IT_WORKS = [
     ("Pre-Cool", "Place ColdBank cells in a standard freezer or ice cooler for "
                  "1&ndash;2 hours before the shift."),
@@ -318,6 +323,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   .expo-card .status {{ font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }}
   .expo-card .name {{ font-size: 13px; color: var(--text); margin-top: 3px; }}
+  .expo-photo {{ max-width: 440px; margin: 18px auto 0; }}
   .cta {{ background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
           border-radius: 12px; padding: 32px 28px; margin-top: 40px; text-align: center; }}
   .cta h2 {{ color: white; font-size: 22px; margin-bottom: 8px; }}
@@ -416,6 +422,10 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <div class="expo-strip">
 {expo_cards}
   </div>
+  <div class="img-card expo-photo">
+    <img src="img/{expo_photo_name}" alt="{expo_photo_caption}">
+    <p>{expo_photo_caption}</p>
+  </div>
 
   <div class="cta">
     <h2>{cta_label}</h2>
@@ -442,6 +452,8 @@ def copy_images():
     IMG_DIR.mkdir(parents=True, exist_ok=True)
     for src, name, _caption in IMAGES:
         shutil.copyfile(src, IMG_DIR / name)
+    expo_src, expo_name, _ = EXPO_PHOTO
+    shutil.copyfile(expo_src, IMG_DIR / expo_name)
 
 
 def build_image_cards():
@@ -509,6 +521,8 @@ def render_page(content):
         cert_rows=build_cert_rows(),
         point_cards=build_point_cards(),
         expo_cards=build_expo_cards(),
+        expo_photo_name=EXPO_PHOTO[1],
+        expo_photo_caption=EXPO_PHOTO[2],
         video_url=VIDEO_URL,
         form_url=FORM_URL,
     )
