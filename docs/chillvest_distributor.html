@@ -109,9 +109,15 @@
                 border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 6px rgba(10,35,66,0.05);
                 border-top: 1px solid #e2eaf4; border-right: 1px solid #e2eaf4;
                 border-bottom: 1px solid #e2eaf4; }
+  .expo-card { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .expo-card .status { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }
   .expo-card .name { font-size: 13px; color: var(--text); margin-top: 3px; }
+  .expo-card .photo-note { font-size: 11px; color: var(--muted); font-style: italic;
+                            margin-top: 4px; }
+  .expo-thumb { flex-shrink: 0; }
+  .expo-thumb img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px;
+                     display: block; border: 1px solid #e2eaf4; }
   .cta { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
           border-radius: 12px; padding: 32px 28px; margin-top: 40px; text-align: center; }
   .cta h2 { color: white; font-size: 22px; margin-bottom: 8px; }
@@ -144,7 +150,7 @@
   <div class="cert-item"><span class="dot"></span>Model: ChillVest-C01</div>
   <div class="cert-item"><span class="dot"></span>Coolant: CB2026</div>
   <div class="cert-item"><span class="dot"></span>Power: DC 5V USB</div>
-  <div class="cert-item"><span class="dot"></span>US Rep: Phoenix, AZ</div>
+  <div class="cert-item"><span class="dot"></span>Global Representative: Phoenix, AZ</div>
 </div></div>
 
 <div class="page">
@@ -184,7 +190,7 @@
       <h3>Key Specifications</h3>
       <table class="specs-table"><tbody>
         <tr><td>Model</td><td>ChillVest-C01</td></tr>
-        <tr><td>Manufacturer</td><td>Duralogic (Holding) Limited &mdash; US rep: Phoenix, AZ</td></tr>
+        <tr><td>Manufacturer</td><td>Duralogic (Holding) Limited &mdash; Global Representative in Phoenix, AZ</td></tr>
         <tr><td>Weight (worn)</td><td>1.3&ndash;1.4 kg / 2.85&ndash;3.0 lb</td></tr>
         <tr><td>Coolant</td><td>CB2026 (sodium polyacrylate + propylene glycol, 50/50)</td></tr>
         <tr><td>Physical State</td><td>Colorless, odorless gel &mdash; density 1.11 g/mL</td></tr>
@@ -226,16 +232,16 @@
   <ul class="values">
     <li>Clear differentiation: all-day swappable cooling vs. 2&ndash;3 hour PCM re-freeze cycles</li>
     <li>Certified and documented: CE (EMC), RoHS, MSDS &mdash; clean supplier onboarding</li>
-    <li>Factory-direct wholesale pricing with US representation in Phoenix, AZ</li>
+    <li>Factory-direct wholesale pricing with our Global Representative in Phoenix, AZ</li>
     <li>Meet us at NSC Safety Congress &amp; Expo 2026 in Indianapolis (Sept 14&ndash;16, Booth #409)</li>
     <li>Complementary to FR workwear lines &mdash; bundling opportunity, not channel conflict</li>
   </ul>
 
   <div class="section-title">Where You Can Find Us</div>
   <div class="expo-strip">
-    <div class="expo-card"><div class="status">Exhibited</div><div class="name">Osaka Expo 2025</div></div>
-    <div class="expo-card"><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409</div></div>
-    <div class="expo-card"><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div>
+    <div class="expo-card"><div><div class="status">Exhibited</div><div class="name">Osaka Expo 2026</div><div class="photo-note">Photo: booth K1-17, taken during booth preparation</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."><img src="img/osaka_expo_2026.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."></a></div>
+    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409</div></div></div>
+    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div></div>
   </div>
 
   <div class="cta">
