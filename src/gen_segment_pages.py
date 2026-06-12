@@ -16,6 +16,7 @@ Segments (from "ChillVest - Outreach Strategy & Contact Segments" doc):
 """
 
 import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -48,7 +49,7 @@ HOW_IT_WORKS = [
 
 SPECS = [
     ("Model", "ChillVest-C01"),
-    ("Manufacturer", "Duralogic (Holding) Limited &mdash; US rep: Phoenix, AZ"),
+    ("Manufacturer", "Duralogic (Holding) Limited &mdash; Global Representative in Phoenix, AZ"),
     ("Weight (worn)", "1.3&ndash;1.4 kg / 2.85&ndash;3.0 lb"),
     ("Coolant", "CB2026 (sodium polyacrylate + propylene glycol, 50/50)"),
     ("Physical State", "Colorless, odorless gel &mdash; density 1.11 g/mL"),
@@ -126,14 +127,14 @@ SEGMENTS = {
                    "certified, documented, with US representation.",
         "intro_title": "Ready for Supplier Qualification",
         "intro": "Duralogic (Holding) Ltd manufactures ChillVest in Asia and supports US "
-                 "customers through a Phoenix, AZ representative. Compliance documentation "
+                 "customers through its Global Representative in Phoenix, AZ. Compliance documentation "
                  "&mdash; CE (EMC), RoHS, and MSDS for customs and OSHA HazCom &mdash; is "
                  "ready to submit with your supplier paperwork, and evaluation samples ship "
                  "on request so your stakeholders can test before a PO.",
         "value_title": "What You Get as a Buyer",
         "values": [
             "Compliance pack ready: CE / EMC certificate, RoHS certificate, MSDS (GHS / REACH)",
-            "US representative in Phoenix, AZ for domestic coordination and fulfillment",
+            "Global Representative in Phoenix, AZ for domestic coordination and fulfillment",
             "Fast sample-to-order pipeline &mdash; evaluation units ship before commitments",
             "Competitive factory-direct pricing with wholesale tiers",
             "Spec sheet and pricing sheet available on request",
@@ -175,7 +176,7 @@ SEGMENTS = {
         "values": [
             "Clear differentiation: all-day swappable cooling vs. 2&ndash;3 hour PCM re-freeze cycles",
             "Certified and documented: CE (EMC), RoHS, MSDS &mdash; clean supplier onboarding",
-            "Factory-direct wholesale pricing with US representation in Phoenix, AZ",
+            "Factory-direct wholesale pricing with our Global Representative in Phoenix, AZ",
             "Meet us at NSC Safety Congress &amp; Expo 2026 in Indianapolis (Sept 14&ndash;16, Booth #409)",
             "Complementary to FR workwear lines &mdash; bundling opportunity, not channel conflict",
         ],
@@ -349,7 +350,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <div class="cert-item"><span class="dot"></span>Model: ChillVest-C01</div>
   <div class="cert-item"><span class="dot"></span>Coolant: CB2026</div>
   <div class="cert-item"><span class="dot"></span>Power: DC 5V USB</div>
-  <div class="cert-item"><span class="dot"></span>US Rep: Phoenix, AZ</div>
+  <div class="cert-item"><span class="dot"></span>Global Representative: Phoenix, AZ</div>
 </div></div>
 
 <div class="page">
@@ -514,10 +515,17 @@ def render_page(content):
 
 
 def main():
+    # Optional CLI args limit generation to named segments, e.g.
+    #   python gen_segment_pages.py hse
+    # No args regenerates all five pages.
+    keys = sys.argv[1:] or list(SEGMENTS)
+    unknown = [k for k in keys if k not in SEGMENTS]
+    if unknown:
+        raise SystemExit(f"unknown segment(s): {unknown} — valid: {list(SEGMENTS)}")
     copy_images()
-    for key, content in SEGMENTS.items():
+    for key in keys:
         out_path = DOCS / f"chillvest_{key}.html"
-        out_path.write_text(render_page(content), encoding="utf-8")
+        out_path.write_text(render_page(SEGMENTS[key]), encoding="utf-8")
         print(f"wrote {out_path.relative_to(ROOT)}")
 
 
