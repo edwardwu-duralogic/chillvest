@@ -325,6 +325,8 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   .expo-card .status {{ font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }}
   .expo-card .name {{ font-size: 13px; color: var(--text); margin-top: 3px; }}
+  .expo-card .photo-note {{ font-size: 11px; color: var(--muted); font-style: italic;
+                            margin-top: 4px; }}
   .expo-thumb {{ flex-shrink: 0; }}
   .expo-thumb img {{ width: 64px; height: 64px; object-fit: cover; border-radius: 6px;
                      display: block; border: 1px solid #e2eaf4; }}
@@ -501,15 +503,18 @@ def build_expo_cards():
     cards = []
     for name, status, has_photo in EXPOS:
         thumb = ""
+        note = ""
         if has_photo:
             thumb = (
                 f'<a class="expo-thumb" href="img/{photo_name}" target="_blank" '
                 f'rel="noopener" title="{photo_caption}">'
                 f'<img src="img/{photo_name}" alt="{photo_caption}"></a>'
             )
+            note = ('<div class="photo-note">Photo: booth K1-17, taken during '
+                    'booth preparation</div>')
         cards.append(
             f'    <div class="expo-card"><div><div class="status">{status}</div>'
-            f'<div class="name">{name}</div></div>{thumb}</div>'
+            f'<div class="name">{name}</div>{note}</div>{thumb}</div>'
         )
     return "\n".join(cards)
 
