@@ -4,6 +4,9 @@ Reads product ingredients (specs, certs, expo proof, demo video, images) and
 writes one HTML one-pager per outreach client segment into /docs so the pages
 publish via GitHub Pages and can be linked from cold emails.
 
+Design follows docs/chillvest.html (How It Works steps, spec table, labeled
+certification table, selling-point card grid).
+
 Segments (from "ChillVest - Outreach Strategy & Contact Segments" doc):
   A + E -> hse          (end corporate users: oil & gas, energy, utilities)
   B     -> procurement  (buyers, category managers, sourcing leads)
@@ -30,23 +33,67 @@ IMAGES = [
      "Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration."),
 ]
 
+HOW_IT_WORKS = [
+    ("Pre-Cool", "Place ColdBank cells in a standard freezer or ice cooler for "
+                 "1&ndash;2 hours before the shift."),
+    ("Wear", "Put on the vest. Gel cells sit against the body, separated by a thin "
+             "comfort fabric layer."),
+    ("Sustained Cooling", "Body heat conducts into the cold gel, which absorbs it evenly "
+                          "&mdash; no cold spike, steady release over hours."),
+    ("Swap, Don't Stop", "When a ColdBank warms up, swap in a fresh one in seconds "
+                         "&mdash; all-day cooling with no mid-shift freezer trips."),
+    ("Airflow Assist", "USB-powered DC 5V motor enhances air circulation in "
+                       "low-wind conditions."),
+]
+
 SPECS = [
     ("Model", "ChillVest-C01"),
+    ("Manufacturer", "Duralogic (Holding) Limited &mdash; US rep: Phoenix, AZ"),
     ("Weight (worn)", "1.3&ndash;1.4 kg / 2.85&ndash;3.0 lb"),
-    ("Cooling system", "Swappable ColdBank gel cells &mdash; CB2026 coolant "
-                       "(sodium polyacrylate + propylene glycol)"),
-    ("Runtime", "All-day cooling via ColdBank swap &mdash; no 2&ndash;3 hour re-freeze cycle"),
-    ("Airflow unit", "DC 5V motor, USB-rechargeable, low noise"),
-    ("Material safety", "Non-toxic, food-grade ingredients; non-flammable (flash point "
-                        "&gt;100&deg;C); not on California Prop 65 list"),
-    ("Certifications", "CE (EMC Directive 2014/30/EU) &middot; RoHS 2011/65/EU &middot; "
-                       "MSDS per GHS / REACH"),
-    ("Manufacturer", "Duralogic (Holding) Ltd &mdash; US representative in Phoenix, AZ"),
+    ("Coolant", "CB2026 (sodium polyacrylate + propylene glycol, 50/50)"),
+    ("Physical State", "Colorless, odorless gel &mdash; density 1.11 g/mL"),
+    ("Boiling Point", "170&ndash;180&deg;C"),
+    ("Flammability", "Flash point &gt;100&deg;C (non-flammable)"),
+    ("Motor Power", "DC 5V, USB-rechargeable, low noise"),
+    ("Runtime", "All-day via ColdBank swap &mdash; no 2&ndash;3 hr re-freeze cycle"),
+    ("Target Environment", "&ge;35&deg;C / 95&deg;F"),
+]
+
+CERTIFICATIONS = [
+    # (certificate, standard, cert number, issued, significance)
+    ("RoHS Certificate", "EU Directive 2011/65/EU", "HTT2026041001R", "May 19, 2026",
+     "All 55 material components pass limits for the 10 restricted hazardous substances."),
+    ("EMC / CE Certificate", "EU Directive 2014/30/EU", "HTT2026041001E", "Apr 22, 2026",
+     "Electronic unit passes emission and immunity testing; authorizes CE marking."),
+    ("MSDS &mdash; CB2026 Coolant", "GHS / REACH", "&mdash;", "Apr 24, 2026",
+     "Safety data sheet accepted by US Customs, carriers, and OSHA HazCom programs."),
+]
+
+SELLING_POINTS = [
+    ("&#128167;", "Non-Disruptive",
+     "No hoses, no dripping ice, no soaked clothing. Workers stay dry and mobile "
+     "throughout the shift."),
+    ("&#9851;", "Reusable &amp; Rechargeable",
+     "Low ongoing cost versus single-use cooling products. Recharges in any standard "
+     "freezer or cooler."),
+    ("&#128263;", "Quiet Operation",
+     "Low-noise motor suitable for customer-facing roles, offices, and noise-sensitive "
+     "environments."),
+    ("&#129514;", "Safe Materials",
+     "Food-adjacent ingredients. Non-flammable, non-carcinogenic, California Prop 65 "
+     "safe. Full MSDS available."),
+    ("&#128203;", "Certified",
+     "EU RoHS and CE certifications demonstrate rigorous material safety and "
+     "electronics manufacturing standards."),
+    ("&#127959;", "Versatile Use Cases",
+     "Construction, oil &amp; gas, agriculture, warehousing, events, military, and "
+     "emergency response."),
 ]
 
 EXPOS = [
     ("Osaka Expo 2025", "Exhibited"),
-    ("NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409", "Exhibiting"),
+    ("NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN "
+     "&middot; Booth #409", "Exhibiting"),
     ("TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan", "Exhibiting"),
 ]
 
@@ -172,7 +219,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
          background: var(--bg); color: var(--text); line-height: 1.6; }}
   .header {{ background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
              color: white; padding: 40px 24px 30px; }}
-  .header-inner {{ max-width: 860px; margin: 0 auto; }}
+  .header-inner {{ max-width: 920px; margin: 0 auto; display: flex;
+                   align-items: flex-start; justify-content: space-between;
+                   gap: 24px; flex-wrap: wrap; }}
   .brand-label {{ font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
                   color: var(--light-blue); margin-bottom: 10px; }}
   .header h1 {{ font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }}
@@ -181,19 +230,29 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
               border: 1px solid var(--teal); border-radius: 6px; padding: 4px 14px;
               font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); }}
   .tagline {{ margin-top: 14px; font-size: 15px; color: #b8d4ef; max-width: 560px; }}
+  .header-badge-group {{ display: flex; flex-direction: column; gap: 8px;
+                         flex-shrink: 0; padding-top: 4px; }}
+  .header-badge {{ background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+                   border-radius: 6px; padding: 6px 14px; font-size: 11px;
+                   color: var(--light-blue); letter-spacing: 1.5px; text-transform: uppercase;
+                   display: flex; align-items: center; gap: 6px; }}
+  .header-badge .check {{ color: var(--teal); font-size: 13px; }}
   .cert-strip {{ background: var(--navy); padding: 10px 24px; }}
-  .cert-strip-inner {{ max-width: 860px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; }}
+  .cert-strip-inner {{ max-width: 920px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; }}
   .cert-item {{ font-size: 11px; color: var(--light-blue); letter-spacing: 1px;
                 text-transform: uppercase; display: flex; align-items: center; gap: 6px; }}
   .cert-item .dot {{ width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }}
-  .page {{ max-width: 860px; margin: 0 auto; padding: 36px 24px 64px; }}
-  .section-title {{ font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
-                    color: var(--mid); font-weight: 700; margin: 36px 0 14px; }}
-  .intro-card {{ background: white; border-radius: 10px; padding: 26px 28px;
-                 box-shadow: 0 1px 4px rgba(10,35,66,0.08); }}
+  .page {{ max-width: 920px; margin: 0 auto; padding: 36px 24px 64px; }}
+  .section-title {{ font-size: 11px; font-weight: 700; letter-spacing: 3px;
+                    text-transform: uppercase; color: var(--mid); margin: 36px 0 16px;
+                    padding-bottom: 8px; border-bottom: 2px solid #dde7f2; }}
+  .card {{ background: white; border-radius: 12px; padding: 28px;
+           box-shadow: 0 2px 12px rgba(10,35,66,0.07); border: 1px solid #e2eaf4; }}
+  .card h3 {{ font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }}
   .intro-card h2 {{ font-size: 22px; color: var(--navy); margin-bottom: 10px; }}
+  .intro-card p {{ font-size: 15px; color: #334155; line-height: 1.75; }}
   .video-card {{ display: flex; align-items: center; gap: 20px; background:
-                 linear-gradient(135deg, var(--navy) 0%, var(--mid) 100%); border-radius: 10px;
+                 linear-gradient(135deg, var(--navy) 0%, var(--mid) 100%); border-radius: 12px;
                  padding: 24px 28px; margin-top: 24px; text-decoration: none;
                  transition: transform 0.15s ease; }}
   .video-card:hover {{ transform: translateY(-2px); }}
@@ -205,28 +264,61 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   .video-card h3 {{ color: white; font-size: 16px; margin-bottom: 4px; }}
   .video-card p {{ color: #b8d4ef; font-size: 13px; }}
   .img-row {{ display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }}
-  .img-card {{ flex: 1; min-width: 260px; background: white; border-radius: 10px;
-               overflow: hidden; box-shadow: 0 1px 4px rgba(10,35,66,0.08); }}
+  .img-card {{ flex: 1; min-width: 260px; background: white; border-radius: 12px;
+               overflow: hidden; box-shadow: 0 2px 12px rgba(10,35,66,0.07);
+               border: 1px solid #e2eaf4; }}
   .img-card img {{ width: 100%; display: block; }}
   .img-card p {{ font-size: 12px; color: var(--muted); padding: 10px 14px; }}
-  table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 10px;
-           overflow: hidden; box-shadow: 0 1px 4px rgba(10,35,66,0.08); }}
-  td {{ padding: 11px 16px; font-size: 14px; border-bottom: 1px solid #e8eef4;
-        vertical-align: top; }}
-  td:first-child {{ font-weight: 700; color: var(--navy); width: 180px; }}
-  tr:last-child td {{ border-bottom: none; }}
-  ul.values {{ background: white; border-radius: 10px; padding: 20px 28px 20px 46px;
-               box-shadow: 0 1px 4px rgba(10,35,66,0.08); }}
+  .two-col {{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }}
+  @media (max-width: 680px) {{ .two-col {{ grid-template-columns: 1fr; }} }}
+  .steps {{ display: flex; flex-direction: column; }}
+  .step {{ display: flex; gap: 18px; align-items: flex-start; padding: 14px 0;
+           border-bottom: 1px solid #f0f4f8; }}
+  .step:last-child {{ border-bottom: none; }}
+  .step-num {{ width: 30px; height: 30px; border-radius: 50%;
+               background: linear-gradient(135deg, var(--mid), var(--blue)); color: white;
+               font-weight: 700; font-size: 13px; display: flex; align-items: center;
+               justify-content: center; flex-shrink: 0; margin-top: 2px; }}
+  .step-content h4 {{ font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }}
+  .step-content p {{ font-size: 13px; color: var(--muted); line-height: 1.55; }}
+  .specs-table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+  .specs-table td {{ padding: 9px 10px; border-bottom: 1px solid #f0f4f8; vertical-align: top; }}
+  .specs-table td:first-child {{ color: var(--muted); font-weight: 600; width: 44%; }}
+  .specs-table td:last-child {{ color: var(--navy); font-weight: 500; }}
+  .specs-table tr:last-child td {{ border-bottom: none; }}
+  .cert-table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+  .cert-table th {{ background: #f0f4f8; color: var(--muted); font-size: 11px;
+                    letter-spacing: 1px; text-transform: uppercase; padding: 8px 12px;
+                    text-align: left; font-weight: 600; }}
+  .cert-table td {{ padding: 10px 12px; border-bottom: 1px solid #f0f4f8;
+                    vertical-align: top; color: var(--text); }}
+  .cert-table tr:last-child td {{ border-bottom: none; }}
+  .cert-table td:first-child {{ font-weight: 600; color: var(--navy); }}
+  .cert-table .held {{ display: inline-block; background: rgba(79,195,161,0.14);
+                       color: #1d8a6b; font-size: 10px; font-weight: 700;
+                       letter-spacing: 1px; text-transform: uppercase;
+                       border-radius: 4px; padding: 2px 8px; margin-left: 6px; }}
+  .points-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }}
+  @media (max-width: 680px) {{ .points-grid {{ grid-template-columns: 1fr; }} }}
+  .point-card {{ background: white; border-radius: 10px; padding: 20px;
+                 border: 1px solid #e2eaf4; box-shadow: 0 1px 6px rgba(10,35,66,0.05); }}
+  .point-icon {{ font-size: 22px; margin-bottom: 8px; }}
+  .point-card h4 {{ font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }}
+  .point-card p {{ font-size: 12.5px; color: var(--muted); line-height: 1.55; }}
+  ul.values {{ background: white; border-radius: 12px; padding: 20px 28px 20px 46px;
+               box-shadow: 0 2px 12px rgba(10,35,66,0.07); border: 1px solid #e2eaf4; }}
   ul.values li {{ font-size: 14px; padding: 6px 0; }}
   ul.values li::marker {{ color: var(--teal); }}
   .expo-strip {{ display: flex; gap: 14px; flex-wrap: wrap; }}
   .expo-card {{ flex: 1; min-width: 220px; background: white; border-left: 4px solid var(--teal);
-                border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 4px rgba(10,35,66,0.08); }}
+                border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 6px rgba(10,35,66,0.05);
+                border-top: 1px solid #e2eaf4; border-right: 1px solid #e2eaf4;
+                border-bottom: 1px solid #e2eaf4; }}
   .expo-card .status {{ font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }}
   .expo-card .name {{ font-size: 13px; color: var(--text); margin-top: 3px; }}
   .cta {{ background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-          border-radius: 10px; padding: 32px 28px; margin-top: 40px; text-align: center; }}
+          border-radius: 12px; padding: 32px 28px; margin-top: 40px; text-align: center; }}
   .cta h2 {{ color: white; font-size: 22px; margin-bottom: 8px; }}
   .cta p {{ color: #b8d4ef; font-size: 14px; margin-bottom: 18px; }}
   .cta a.button {{ display: inline-block; background: var(--teal); color: var(--navy);
@@ -240,22 +332,29 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <body>
 
 <div class="header"><div class="header-inner">
-  <div class="brand-label">Duralogic (Holding) Ltd</div>
-  <h1>Chill<span>Vest</span></h1>
-  <div class="edition">{edition}</div>
-  <p class="tagline">{tagline}</p>
+  <div>
+    <div class="brand-label">Duralogic (Holding) Ltd</div>
+    <h1>Chill<span>Vest</span></h1>
+    <div class="edition">{edition}</div>
+    <p class="tagline">{tagline}</p>
+  </div>
+  <div class="header-badge-group">
+    <div class="header-badge"><span class="check">&#10003;</span> RoHS Certified</div>
+    <div class="header-badge"><span class="check">&#10003;</span> CE / EMC Certified</div>
+    <div class="header-badge"><span class="check">&#10003;</span> GHS / REACH MSDS</div>
+  </div>
 </div></div>
 
 <div class="cert-strip"><div class="cert-strip-inner">
-  <div class="cert-item"><span class="dot"></span>CE Marked (EMC)</div>
-  <div class="cert-item"><span class="dot"></span>RoHS Certified</div>
-  <div class="cert-item"><span class="dot"></span>MSDS &mdash; GHS / REACH</div>
-  <div class="cert-item"><span class="dot"></span>Model ChillVest-C01</div>
+  <div class="cert-item"><span class="dot"></span>Model: ChillVest-C01</div>
+  <div class="cert-item"><span class="dot"></span>Coolant: CB2026</div>
+  <div class="cert-item"><span class="dot"></span>Power: DC 5V USB</div>
+  <div class="cert-item"><span class="dot"></span>US Rep: Phoenix, AZ</div>
 </div></div>
 
 <div class="page">
 
-  <div class="intro-card">
+  <div class="card intro-card">
     <h2>{intro_title}</h2>
     <p>{intro}</p>
   </div>
@@ -273,10 +372,39 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 {image_cards}
   </div>
 
-  <div class="section-title">Key Specifications</div>
-  <table>
+  <div class="section-title">How It Works &amp; Key Specifications</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>How It Works</h3>
+      <div class="steps">
+{steps}
+      </div>
+    </div>
+    <div class="card">
+      <h3>Key Specifications</h3>
+      <table class="specs-table"><tbody>
 {spec_rows}
-  </table>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="section-title">Certifications</div>
+  <div class="card">
+    <table class="cert-table">
+      <thead><tr>
+        <th>Certificate</th><th>Standard</th><th>Certificate No.</th>
+        <th>Issued</th><th>What It Means</th>
+      </tr></thead>
+      <tbody>
+{cert_rows}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Key Selling Points</div>
+  <div class="points-grid">
+{point_cards}
+  </div>
 
   <div class="section-title">{value_title}</div>
   <ul class="values">
@@ -316,18 +444,42 @@ def copy_images():
 
 
 def build_image_cards():
-    cards = []
-    for _src, name, caption in IMAGES:
-        cards.append(
-            f'    <div class="img-card"><img src="img/{name}" '
-            f'alt="{caption}"><p>{caption}</p></div>'
+    return "\n".join(
+        f'    <div class="img-card"><img src="img/{name}" '
+        f'alt="{caption}"><p>{caption}</p></div>'
+        for _src, name, caption in IMAGES
+    )
+
+
+def build_steps():
+    rows = []
+    for i, (title, desc) in enumerate(HOW_IT_WORKS, start=1):
+        rows.append(
+            f'        <div class="step"><div class="step-num">{i}</div>'
+            f'<div class="step-content"><h4>{title}</h4><p>{desc}</p></div></div>'
         )
-    return "\n".join(cards)
+    return "\n".join(rows)
 
 
 def build_spec_rows():
     return "\n".join(
-        f"    <tr><td>{label}</td><td>{value}</td></tr>" for label, value in SPECS
+        f"        <tr><td>{label}</td><td>{value}</td></tr>" for label, value in SPECS
+    )
+
+
+def build_cert_rows():
+    return "\n".join(
+        f'        <tr><td>{cert}<span class="held">Held</span></td><td>{std}</td>'
+        f"<td>{num}</td><td>{issued}</td><td>{meaning}</td></tr>"
+        for cert, std, num, issued, meaning in CERTIFICATIONS
+    )
+
+
+def build_point_cards():
+    return "\n".join(
+        f'    <div class="point-card"><div class="point-icon">{icon}</div>'
+        f"<h4>{title}</h4><p>{desc}</p></div>"
+        for icon, title, desc in SELLING_POINTS
     )
 
 
@@ -340,10 +492,7 @@ def build_expo_cards():
 
 
 def render_page(content):
-    edition_plain = (
-        content["edition"]
-        .replace("&amp;", "&").replace("&mdash;", "-")
-    )
+    edition_plain = content["edition"].replace("&amp;", "&").replace("&mdash;", "-")
     return PAGE_TEMPLATE.format(
         edition=content["edition"],
         edition_plain=edition_plain,
@@ -354,7 +503,10 @@ def render_page(content):
         value_items="\n".join(f"    <li>{v}</li>" for v in content["values"]),
         cta_label=content["cta_label"],
         image_cards=build_image_cards(),
+        steps=build_steps(),
         spec_rows=build_spec_rows(),
+        cert_rows=build_cert_rows(),
+        point_cards=build_point_cards(),
         expo_cards=build_expo_cards(),
         video_url=VIDEO_URL,
         form_url=FORM_URL,
