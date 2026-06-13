@@ -150,18 +150,20 @@ SEGMENTS = {
     "partner": {
         "edition": "Strategic Partnership Briefing",
         "tagline": "Co-develop the next generation of worker cooling &mdash; including a "
-                   "no-freezer chemical cooling system for remote operations.",
+                   "no-freezer chemical cooling system now in development for remote operations.",
         "intro_title": "A Lighthouse Partnership, Not a Product Sale",
         "intro": "For organizations operating in extreme heat at scale, we offer a "
                  "partnership track: site pilots, preferential bulk pricing, co-branding "
                  "with your safety program, and a direct line into product development. "
-                 "Our newest extension activates cooling chemically &mdash; reaching "
-                 "~0&deg;C in seconds with just tap water, no freezer infrastructure "
-                 "anywhere in the field &mdash; built for the most remote worksites.",
+                 "Today's production ChillVest uses freezer-charged ColdBank cells. Our "
+                 "next extension &mdash; in development and moving quickly &mdash; activates "
+                 "cooling chemically, reaching ~0&deg;C in seconds with just tap water and "
+                 "no freezer infrastructure, designed for the most remote worksites. "
+                 "Co-development partners get early access as it matures.",
         "value_title": "Partnership Tracks",
         "values": [
             "Site pilot programs with on-site demonstration by our team",
-            "Early co-development access to the no-freezer chemical cooling kit",
+            "Early co-development access to the no-freezer chemical cooling kit (in development)",
             "Preferential pricing on bulk and multi-site orders",
             "Co-branding options aligned to your internal safety program",
             "Direct input into sizing, configuration, and deployment workflow",
