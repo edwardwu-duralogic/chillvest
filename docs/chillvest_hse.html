@@ -61,8 +61,8 @@
   .img-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
   .img-card { flex: 1; min-width: 260px; background: white; border-radius: 12px;
                overflow: hidden; box-shadow: 0 2px 12px rgba(10,35,66,0.07);
-               border: 1px solid #e2eaf4; }
-  .img-card img { width: 100%; display: block; }
+               border: 1px solid #e2eaf4; position: relative; }
+  .img-card img { width: 100%; display: block; height: 220px; object-fit: cover; }
   .img-card p { font-size: 12px; color: var(--muted); padding: 10px 14px; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
@@ -109,7 +109,7 @@
                 border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 6px rgba(10,35,66,0.05);
                 border-top: 1px solid #e2eaf4; border-right: 1px solid #e2eaf4;
                 border-bottom: 1px solid #e2eaf4; }
-  .expo-card { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .expo-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
   .expo-card .status { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
                         color: var(--teal); font-weight: 700; }
   .expo-card .name { font-size: 13px; color: var(--text); margin-top: 3px; }
@@ -128,6 +128,16 @@
   .contact { margin-top: 22px; font-size: 13px; color: #b8d4ef; line-height: 1.7; }
   .contact a { color: var(--teal); text-decoration: none; }
   .footer { text-align: center; font-size: 11px; color: var(--muted); padding: 18px; }
+  .img-tag { position: absolute; left: 0; right: 0; bottom: 32px; background: linear-gradient(to top, rgba(10,35,66,0.85) 0%, transparent 100%); padding: 32px 14px 8px; color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+  .instacool-callout { background: #fffbeb; border: 1px solid #fcd34d; border-left: 4px solid var(--amber); border-radius: 12px; padding: 26px 28px; }
+  .instacool-badge { display: inline-block; background: var(--amber); color: white; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; padding: 3px 10px; margin-right: 8px; }
+  .instacool-coming { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #d97706; }
+  .instacool-callout h3 { font-size: 18px; font-weight: 800; color: #92400e; margin: 10px 0 10px; line-height: 1.3; }
+  .ic-desc { font-size: 14px; color: #78350f; line-height: 1.75; margin-bottom: 16px; }
+  .instacool-bullets { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .instacool-bullet { background: rgba(245,158,11,0.12); border: 1px solid #fcd34d; border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: #92400e; font-weight: 600; flex: 1; min-width: 140px; text-align: center; }
+  .instacool-timeline { font-size: 12.5px; color: #a16207; border-top: 1px solid #fcd34d; padding-top: 12px; }
+  .instacool-timeline strong { color: #92400e; }
 </style>
 </head>
 <body>
@@ -157,7 +167,7 @@
 
   <div class="card intro-card">
     <h2>Heat Stress Is a Safety Metric You Can Move</h2>
-    <p>Heat incidents drive recordables, lost hours, and early shift stops. ChillVest keeps a worker's core temperature in the safe range even at 100&deg;F+ by holding cold gel cells against the body and swapping in a fresh ColdBank when needed &mdash; no freezer trips mid-shift, no soaked clothing, no downtime. Field teams stay on task through the hottest part of the day.</p>
+    <p>Heat incidents drive recordables, lost hours, and early shift stops. ChillVest keeps a worker's core temperature in the safe range even at 38&deg;C / 100&deg;F+ by holding cold gel cells against the body and swapping in a fresh ColdBank when needed &mdash; no freezer trips mid-shift, no soaked clothing, no downtime. Field teams stay on task through the hottest part of the day.</p>
   </div>
 
   <a class="video-card" href="https://drive.google.com/file/d/1yKCWeUDbsyA_6mFEs7U-3kfguiNkogm5/view" target="_blank" rel="noopener">
@@ -170,8 +180,9 @@
 
   <div class="section-title">Product</div>
   <div class="img-row">
-    <div class="img-card"><img src="img/vest_front_back.jpg" alt="ChillVest worn — front and back. Total weight 1.3 kg / 2.85 lb."><p>ChillVest worn — front and back. Total weight 1.3 kg / 2.85 lb.</p></div>
-    <div class="img-card"><img src="img/vest_weight.jpg" alt="Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration."><p>Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration.</p></div>
+    <div class="img-card"><img src="../data/output/chillvest_imgs/p2_img1_335x328.jpeg" alt="ColdBank cooling canisters — cylindrical style shown; flat/rectangular variation also available."><p>ColdBank cooling canisters — flat/rectangular variation also available.</p></div>
+    <div class="img-card"><img src="img/vest_weight.jpg" alt="ChillVest with belt-mounted ColdBank — 1.4 kg / 3 lb."><p>ChillVest with belt-mounted ColdBank — 1.4 kg / 3 lb.</p></div>
+    <div class="img-card"><img src="../data/cooling effect.jpg" alt="ChillVest cooling effect — temperature difference during active use."><p>Cooling effect — temperature difference during active use.</p></div>
   </div>
 
   <div class="section-title">How It Works &amp; Key Specifications</div>
@@ -183,7 +194,7 @@
         <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Wear</h4><p>Put on the vest. Gel cells sit against the body, separated by a thin comfort fabric layer.</p></div></div>
         <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Sustained Cooling</h4><p>Body heat conducts into the cold gel, which absorbs it evenly &mdash; no cold spike, steady release over hours.</p></div></div>
         <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Swap, Don't Stop</h4><p>When a ColdBank warms up, swap in a fresh one in seconds &mdash; all-day cooling with no mid-shift freezer trips.</p></div></div>
-        <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Airflow Assist</h4><p>USB-powered DC 5V motor enhances air circulation in low-wind conditions.</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Fluid Circulation</h4><p>USB-powered DC 5V motor circulates coolant fluid through the vest, ensuring even temperature distribution across all cooling zones.</p></div></div>
       </div>
     </div>
     <div class="card">
@@ -191,11 +202,11 @@
       <table class="specs-table"><tbody>
         <tr><td>Model</td><td>ChillVest-C01</td></tr>
         <tr><td>Manufacturer</td><td>Duralogic (Holding) Limited &mdash; Global Representative in Phoenix, AZ</td></tr>
-        <tr><td>Weight (worn)</td><td>1.3&ndash;1.4 kg / 2.85&ndash;3.0 lb</td></tr>
+        <tr><td>Weight (worn)</td><td>1.4 kg / 3 lb</td></tr>
         <tr><td>Coolant</td><td>CB2026 (sodium polyacrylate + propylene glycol, 50/50)</td></tr>
         <tr><td>Physical State</td><td>Colorless, odorless gel &mdash; density 1.11 g/mL</td></tr>
-        <tr><td>Boiling Point</td><td>170&ndash;180&deg;C</td></tr>
-        <tr><td>Flammability</td><td>Flash point &gt;100&deg;C (non-flammable)</td></tr>
+        <tr><td>Boiling Point</td><td>170&ndash;180&deg;C / 338&ndash;356&deg;F</td></tr>
+        <tr><td>Flammability</td><td>Flash point &gt;100&deg;C / &gt;212&deg;F (non-flammable)</td></tr>
         <tr><td>Motor Power</td><td>DC 5V, USB-rechargeable, low noise</td></tr>
         <tr><td>Runtime</td><td>All-day via ColdBank swap &mdash; no 2&ndash;3 hr re-freeze cycle</td></tr>
         <tr><td>Target Environment</td><td>&ge;35&deg;C / 95&deg;F</td></tr>
@@ -233,14 +244,28 @@
     <li>All-day cooling: swappable ColdBank vs. phase-change vests that quit after 2&ndash;3 hours and need a freezer</li>
     <li>3 lb worn weight &mdash; doesn't interfere with harnesses, FR clothing, or tools</li>
     <li>No dripping ice or hoses; workers stay dry and presentable</li>
-    <li>Quiet USB-rechargeable airflow unit for enclosed or customer-facing work</li>
+    <li>Quiet USB-rechargeable fluid circulation unit for enclosed or customer-facing work</li>
     <li>Free evaluation sample program for HSE pilot teams</li>
   </ul>
 
+  <div class="section-title">What's Next</div>
+  <div class="instacool-callout">
+    <div><span class="instacool-badge">In Development</span><span class="instacool-coming">Coming Soon &mdash; 2026</span></div>
+    <h3>ChillVest + InstaCool &mdash; Cooling Without Cold Storage</h3>
+    <p class="ic-desc">The next evolution of ChillVest eliminates its single biggest field barrier: the freezer pre-cooling step. InstaCool uses an endothermic chemical reaction that drops the ColdBank to near 0&deg;C / 32&deg;F in seconds &mdash; no electricity, no refrigeration, no cold chain required. Workers add water to a pre-measured sachet on-site. The reaction activates instantly. ColdBank tubes extract the cold and circulate it through the vest. Ready to wear in under a minute &mdash; a complete portable cooling system with zero infrastructure requirement.</p>
+    <div class="instacool-bullets">
+      <div class="instacool-bullet">No freezer or power required</div>
+      <div class="instacool-bullet">~0&deg;C / 32&deg;F within seconds</div>
+      <div class="instacool-bullet">Extended cooling per activation</div>
+      <div class="instacool-bullet">Fully field-deployable</div>
+    </div>
+    <p class="instacool-timeline">Prototype target: July 2026 &nbsp;&middot;&nbsp; Live expo demo: NSC Safety Congress, Indianapolis, IN, USA &mdash; September 2026 &nbsp;&middot;&nbsp; <strong>Contact us to register early interest.</strong></p>
+  </div>
+
   <div class="section-title">Where You Can Find Us</div>
   <div class="expo-strip">
-    <div class="expo-card"><div><div class="status">Exhibited</div><div class="name">Osaka Expo 2026</div><div class="photo-note">Photo: booth K1-17, taken during booth preparation</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."><img src="img/osaka_expo_2026.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."></a></div>
-    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409</div></div></div>
+    <div class="expo-card"><div><div class="status">Exhibited</div><div class="name">Osaka Expo 2026 &mdash; Osaka, Japan</div><div class="photo-note">Photo: booth K1-17, taken during booth preparation</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."><img src="img/osaka_expo_2026.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."></a></div>
+    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN, USA &middot; Booth #409</div></div></div>
     <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div></div>
   </div>
 

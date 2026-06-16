@@ -61,8 +61,8 @@
   .img-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
   .img-card { flex: 1; min-width: 260px; background: white; border-radius: 12px;
                overflow: hidden; box-shadow: 0 2px 12px rgba(10,35,66,0.07);
-               border: 1px solid #e2eaf4; }
-  .img-card img { width: 100%; display: block; }
+               border: 1px solid #e2eaf4; position: relative; }
+  .img-card img { width: 100%; display: block; height: 220px; object-fit: cover; }
   .img-card p { font-size: 12px; color: var(--muted); padding: 10px 14px; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
@@ -128,6 +128,7 @@
   .contact { margin-top: 22px; font-size: 13px; color: #b8d4ef; line-height: 1.7; }
   .contact a { color: var(--teal); text-decoration: none; }
   .footer { text-align: center; font-size: 11px; color: var(--muted); padding: 18px; }
+  .img-tag { position: absolute; left: 0; right: 0; bottom: 32px; background: linear-gradient(to top, rgba(10,35,66,0.85) 0%, transparent 100%); padding: 32px 14px 8px; color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -170,8 +171,9 @@
 
   <div class="section-title">Product</div>
   <div class="img-row">
-    <div class="img-card"><img src="img/vest_front_back.jpg" alt="ChillVest worn — front and back. Total weight 1.3 kg / 2.85 lb."><p>ChillVest worn — front and back. Total weight 1.3 kg / 2.85 lb.</p></div>
-    <div class="img-card"><img src="img/vest_weight.jpg" alt="Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration."><p>Low-profile harness with belt-mounted ColdBank — 1.4 kg / 3 lb configuration.</p></div>
+    <div class="img-card"><img src="../data/output/chillvest_imgs/p2_img1_335x328.jpeg" alt="ColdBank cooling canisters — cylindrical style shown; flat/rectangular variation also available."><p>ColdBank cooling canisters — flat/rectangular variation also available.</p></div>
+    <div class="img-card"><img src="img/vest_weight.jpg" alt="ChillVest with belt-mounted ColdBank — 1.4 kg / 3 lb."><p>ChillVest with belt-mounted ColdBank — 1.4 kg / 3 lb.</p></div>
+    <div class="img-card"><img src="../data/cooling effect.jpg" alt="ChillVest cooling effect — temperature difference during active use."><p>Cooling effect — temperature difference during active use.</p></div>
   </div>
 
   <div class="section-title">How It Works &amp; Key Specifications</div>
@@ -183,7 +185,7 @@
         <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Wear</h4><p>Put on the vest. Gel cells sit against the body, separated by a thin comfort fabric layer.</p></div></div>
         <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Sustained Cooling</h4><p>Body heat conducts into the cold gel, which absorbs it evenly &mdash; no cold spike, steady release over hours.</p></div></div>
         <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Swap, Don't Stop</h4><p>When a ColdBank warms up, swap in a fresh one in seconds &mdash; all-day cooling with no mid-shift freezer trips.</p></div></div>
-        <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Airflow Assist</h4><p>USB-powered DC 5V motor enhances air circulation in low-wind conditions.</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Fluid Circulation</h4><p>USB-powered DC 5V motor circulates coolant fluid through the vest, ensuring even temperature distribution across all cooling zones.</p></div></div>
       </div>
     </div>
     <div class="card">
@@ -191,7 +193,7 @@
       <table class="specs-table"><tbody>
         <tr><td>Model</td><td>ChillVest-C01</td></tr>
         <tr><td>Manufacturer</td><td>Duralogic (Holding) Limited &mdash; Global Representative in Phoenix, AZ</td></tr>
-        <tr><td>Weight (worn)</td><td>1.3&ndash;1.4 kg / 2.85&ndash;3.0 lb</td></tr>
+        <tr><td>Weight (worn)</td><td>1.4 kg / 3 lb</td></tr>
         <tr><td>Coolant</td><td>CB2026 (sodium polyacrylate + propylene glycol, 50/50)</td></tr>
         <tr><td>Physical State</td><td>Colorless, odorless gel &mdash; density 1.11 g/mL</td></tr>
         <tr><td>Boiling Point</td><td>170&ndash;180&deg;C</td></tr>
@@ -239,8 +241,8 @@
 
   <div class="section-title">Where You Can Find Us</div>
   <div class="expo-strip">
-    <div class="expo-card"><div><div class="status">Exhibited</div><div class="name">Osaka Expo 2026</div><div class="photo-note">Photo: booth K1-17, taken during booth preparation</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."><img src="img/osaka_expo_2026.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."></a></div>
-    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN &middot; Booth #409</div></div></div>
+    <div class="expo-card"><div><div class="status">Exhibited</div><div class="name">Osaka Expo 2026 &mdash; Osaka, Japan</div><div class="photo-note">Photo: booth K1-17, taken during booth preparation</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."><img src="img/osaka_expo_2026.jpg" alt="Duralogic booth K1-17 at Osaka Expo 2026, photographed during expo preparation."></a></div>
+    <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; Sept 14&ndash;16, Indianapolis, IN, USA &middot; Booth #409</div></div></div>
     <div class="expo-card"><div><div class="status">Exhibiting</div><div class="name">TOOL JAPAN 2026 &mdash; Oct 7&ndash;9, Makuhari Messe, Chiba, Japan</div></div></div>
   </div>
 
