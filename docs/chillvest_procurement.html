@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -58,6 +58,14 @@
                       margin-left: 5px; }
   .video-card h3 { color: white; font-size: 16px; margin-bottom: 4px; }
   .video-card p { color: #b8d4ef; font-size: 13px; }
+  .action-row { display: flex; gap: 16px; align-items: stretch; margin-top: 24px; }
+  .action-row .video-card { flex: 1; margin-top: 0; }
+  .sample-card-mini { display: flex; flex-direction: column; align-items: center; justify-content: center;
+                       background: var(--teal); border-radius: 12px; padding: 24px 28px;
+                       text-decoration: none; transition: transform 0.15s ease; min-width: 200px; text-align: center; }
+  .sample-card-mini:hover { transform: translateY(-2px); }
+  .sample-card-mini h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: white; }
+  .sample-card-mini p { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; }
   .img-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
   .img-card { flex: 1; min-width: 260px; background: white; border-radius: 12px;
                overflow: hidden; box-shadow: 0 2px 12px rgba(10,35,66,0.07);
@@ -161,19 +169,25 @@
     <p>Duralogic (Holding) Ltd manufactures ChillVest in Asia and supports US customers through its Global Representative in Phoenix, AZ. Compliance documentation &mdash; CE (EMC), RoHS, and MSDS for customs and OSHA HazCom &mdash; is ready to submit with your supplier paperwork, and evaluation samples ship on request so your stakeholders can test before a PO.</p>
   </div>
 
-  <a class="video-card" href="https://drive.google.com/file/d/1yKCWeUDbsyA_6mFEs7U-3kfguiNkogm5/view" target="_blank" rel="noopener">
-    <div class="play-btn"></div>
-    <div>
-      <h3>Watch ChillVest in Action &mdash; Short Product Demo</h3>
-      <p>Vest operation, ColdBank setup, and real-world wear. Click to play.</p>
-    </div>
-  </a>
+  <div class="action-row">
+    <a class="video-card" href="https://drive.google.com/file/d/1yKCWeUDbsyA_6mFEs7U-3kfguiNkogm5/view" target="_blank" rel="noopener">
+      <div class="play-btn"></div>
+      <div>
+        <h3>Watch ChillVest in Action &mdash; Short Product Demo</h3>
+        <p>Vest operation, ColdBank setup, and real-world wear. Click to play.</p>
+      </div>
+    </a>
+    <a class="sample-card-mini" href="https://docs.google.com/forms/d/1xP78a-Gph2JwS-bNTbZkW42qcwMo9A8t8uYNvN8mjto/viewform" target="_blank" rel="noopener">
+      <h3>Request a Sample</h3>
+      <p>Free evaluation unit &mdash; ships promptly</p>
+    </a>
+  </div>
 
   <div class="section-title">Product</div>
   <div class="img-row">
-    <div class="img-card"><img src="../data/output/chillvest_imgs/p2_img1_335x328.jpeg" alt="ColdBank cooling canisters — cylindrical style shown; flat/rectangular variation also available."><p>ColdBank cooling canisters — flat/rectangular variation also available.</p></div>
+    <div class="img-card"><img src="img/p2_img1_335x328.jpeg" alt="ColdBank cooling canisters — cylindrical style shown; flat/rectangular variation also available."><p>ColdBank cooling canisters — flat/rectangular variation also available.</p></div>
     <div class="img-card"><img src="img/vest_weight.jpg" alt="ChillVest with belt-mounted ColdBank — 1.4 kg / 3 lb."><p>ChillVest with belt-mounted ColdBank — 1.4 kg / 3 lb.</p></div>
-    <div class="img-card"><img src="../data/cooling effect.jpg" alt="ChillVest cooling effect — temperature difference during active use."><p>Cooling effect — temperature difference during active use.</p></div>
+    <div class="img-card"><img src="img/cooling_effect.jpg" alt="ChillVest cooling effect — temperature difference during active use."><p>Cooling effect — temperature difference during active use.</p></div>
   </div>
 
   <div class="section-title">How It Works &amp; Key Specifications</div>
