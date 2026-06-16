@@ -137,15 +137,19 @@
   .contact a { color: var(--teal); text-decoration: none; }
   .footer { text-align: center; font-size: 11px; color: var(--muted); padding: 18px; }
   .img-tag { position: absolute; left: 0; right: 0; bottom: 32px; background: linear-gradient(to top, rgba(10,35,66,0.85) 0%, transparent 100%); padding: 32px 14px 8px; color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
-  .instacool-callout { background: #fffbeb; border: 1px solid #fcd34d; border-left: 4px solid var(--amber); border-radius: 12px; padding: 26px 28px; }
-  .instacool-badge { display: inline-block; background: var(--amber); color: white; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; padding: 3px 10px; margin-right: 8px; }
-  .instacool-coming { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #d97706; }
-  .instacool-callout h3 { font-size: 18px; font-weight: 800; color: #92400e; margin: 10px 0 10px; line-height: 1.3; }
-  .ic-desc { font-size: 14px; color: #78350f; line-height: 1.75; margin-bottom: 16px; }
-  .instacool-bullets { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
-  .instacool-bullet { background: rgba(245,158,11,0.12); border: 1px solid #fcd34d; border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: #92400e; font-weight: 600; flex: 1; min-width: 140px; text-align: center; }
-  .instacool-timeline { font-size: 12.5px; color: #a16207; border-top: 1px solid #fcd34d; padding-top: 12px; }
-  .instacool-timeline strong { color: #92400e; }
+  @media (max-width: 640px) {
+    .header { padding: 24px 16px 20px; }
+    .header h1 { font-size: 28px; }
+    .tagline { font-size: 13px; }
+    .page { padding: 24px 16px 48px; }
+    .action-row { flex-direction: column; }
+    .sample-card-mini { min-width: unset; }
+    .img-card { min-width: 100%; }
+    .expo-card { min-width: 100%; }
+    .cta { padding: 24px 20px; }
+    .cta h2 { font-size: 18px; }
+    .intro-card h2 { font-size: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -261,20 +265,6 @@
     <li>Quiet USB-rechargeable fluid circulation unit for enclosed or customer-facing work</li>
     <li>Free evaluation sample program for HSE pilot teams</li>
   </ul>
-
-  <div class="section-title">What's Next</div>
-  <div class="instacool-callout">
-    <div><span class="instacool-badge">In Development</span><span class="instacool-coming">Coming Soon &mdash; 2026</span></div>
-    <h3>ChillVest + InstaCool &mdash; Cooling Without Cold Storage</h3>
-    <p class="ic-desc">The next evolution of ChillVest eliminates its single biggest field barrier: the freezer pre-cooling step. InstaCool uses an endothermic chemical reaction that drops the ColdBank to near 0&deg;C / 32&deg;F in seconds &mdash; no electricity, no refrigeration, no cold chain required. Workers add water to a pre-measured sachet on-site. The reaction activates instantly. ColdBank tubes extract the cold and circulate it through the vest. Ready to wear in under a minute &mdash; a complete portable cooling system with zero infrastructure requirement.</p>
-    <div class="instacool-bullets">
-      <div class="instacool-bullet">No freezer or power required</div>
-      <div class="instacool-bullet">~0&deg;C / 32&deg;F within seconds</div>
-      <div class="instacool-bullet">Extended cooling per activation</div>
-      <div class="instacool-bullet">Fully field-deployable</div>
-    </div>
-    <p class="instacool-timeline">Prototype target: July 2026 &nbsp;&middot;&nbsp; Live expo demo: NSC Safety Congress, Indianapolis, IN, USA &mdash; September 2026 &nbsp;&middot;&nbsp; <strong>Contact us to register early interest.</strong></p>
-  </div>
 
   <div class="section-title">Where You Can Find Us</div>
   <div class="expo-strip">
