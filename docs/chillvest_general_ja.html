@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChillVest &mdash; パーソナル冷却ベスト | Duralogic</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0a2342; --blue: #1a4a7a; --mid: #2563a8; --light-blue: #7ab3e0;
+    --teal: #4fc3a1; --amber: #f59e0b; --bg: #f0f4f8; --text: #1a1a2e; --muted: #64748b;
+  }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Segoe UI', system-ui, sans-serif;
+         background: var(--bg); color: var(--text); line-height: 1.7; }
+  .header { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+             color: white; padding: 40px 24px 30px; }
+  .header-inner { max-width: 920px; margin: 0 auto; display: flex;
+                   align-items: flex-start; justify-content: space-between;
+                   gap: 24px; flex-wrap: wrap; }
+  .brand-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+                  color: var(--light-blue); margin-bottom: 10px; }
+  .header h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+  .header h1 span { color: var(--teal); }
+  .edition { display: inline-block; margin-top: 10px; background: rgba(79,195,161,0.15);
+              border: 1px solid var(--teal); border-radius: 6px; padding: 4px 14px;
+              font-size: 12px; letter-spacing: 1px; color: var(--teal); }
+  .tagline { margin-top: 14px; font-size: 15px; color: #b8d4ef; max-width: 600px; }
+  .header-badge-group { display: flex; flex-direction: column; gap: 8px;
+                         flex-shrink: 0; padding-top: 4px; }
+  .header-badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+                   border-radius: 6px; padding: 6px 14px; font-size: 11px;
+                   color: var(--light-blue); letter-spacing: 1px;
+                   display: flex; align-items: center; gap: 6px; }
+  .header-badge .check { color: var(--teal); font-size: 13px; }
+  .cert-strip { background: var(--navy); padding: 10px 24px; }
+  .cert-strip-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; }
+  .cert-item { font-size: 11px; color: var(--light-blue); letter-spacing: 0.5px;
+                display: flex; align-items: center; gap: 6px; }
+  .cert-item .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+  .page { max-width: 920px; margin: 0 auto; padding: 36px 24px 64px; }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 1px;
+                    color: var(--mid); margin: 36px 0 16px;
+                    padding-bottom: 8px; border-bottom: 2px solid #dde7f2; }
+  .card { background: white; border-radius: 12px; padding: 28px;
+           box-shadow: 0 2px 12px rgba(10,35,66,0.07); border: 1px solid #e2eaf4; }
+  .card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+  .intro-card h2 { font-size: 22px; color: var(--navy); margin-bottom: 10px; }
+  .intro-card p { font-size: 15px; color: #334155; line-height: 1.9; }
+  .video-card { display: flex; align-items: center; gap: 20px; background:
+                 linear-gradient(135deg, var(--navy) 0%, var(--mid) 100%); border-radius: 12px;
+                 padding: 24px 28px; margin-top: 24px; text-decoration: none;
+                 transition: transform 0.15s ease; }
+  .video-card:hover { transform: translateY(-2px); }
+  .play-btn { width: 58px; height: 58px; border-radius: 50%; background: var(--teal);
+               display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .play-btn::after { content: ''; border-left: 18px solid var(--navy);
+                      border-top: 11px solid transparent; border-bottom: 11px solid transparent;
+                      margin-left: 5px; }
+  .video-card h3 { color: white; font-size: 16px; margin-bottom: 4px; }
+  .video-card p { color: #b8d4ef; font-size: 13px; }
+  .action-row { display: flex; gap: 16px; align-items: stretch; margin-top: 24px; }
+  .action-row .video-card { flex: 1; margin-top: 0; }
+  .sample-card-mini { display: flex; flex-direction: column; align-items: center; justify-content: center;
+                       background: var(--teal); border-radius: 12px; padding: 24px 28px;
+                       text-decoration: none; transition: transform 0.15s ease; min-width: 200px; text-align: center; }
+  .sample-card-mini:hover { transform: translateY(-2px); }
+  .sample-card-mini h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: white; }
+  .sample-card-mini p { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .img-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+  .img-card { flex: 1; min-width: 260px; background: white; border-radius: 12px;
+               overflow: hidden; box-shadow: 0 2px 12px rgba(10,35,66,0.07);
+               border: 1px solid #e2eaf4; position: relative; }
+  .img-card img { width: 100%; display: block; height: 220px; object-fit: cover; cursor: zoom-in; transition: transform 0.25s ease; }
+  .img-card a { display: block; overflow: hidden; }
+  .img-card a:hover img { transform: scale(1.05); }
+  .img-card p { font-size: 12px; color: var(--muted); padding: 10px 14px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+  .steps { display: flex; flex-direction: column; }
+  .step { display: flex; gap: 18px; align-items: flex-start; padding: 14px 0;
+           border-bottom: 1px solid #f0f4f8; }
+  .step:last-child { border-bottom: none; }
+  .step-num { width: 30px; height: 30px; border-radius: 50%;
+               background: linear-gradient(135deg, var(--mid), var(--blue)); color: white;
+               font-weight: 700; font-size: 13px; display: flex; align-items: center;
+               justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step-content h4 { font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .step-content p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .specs-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .specs-table td { padding: 9px 10px; border-bottom: 1px solid #f0f4f8; vertical-align: top; }
+  .specs-table td:first-child { color: var(--muted); font-weight: 600; width: 44%; }
+  .specs-table td:last-child { color: var(--navy); font-weight: 500; }
+  .specs-table tr:last-child td { border-bottom: none; }
+  .cert-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .cert-table th { background: #f0f4f8; color: var(--muted); font-size: 11px;
+                    letter-spacing: 0.5px; padding: 8px 12px;
+                    text-align: left; font-weight: 600; }
+  .cert-table td { padding: 10px 12px; border-bottom: 1px solid #f0f4f8;
+                    vertical-align: top; color: var(--text); }
+  .cert-table tr:last-child td { border-bottom: none; }
+  .cert-table td:first-child { font-weight: 600; color: var(--navy); }
+  .cert-table .held { display: inline-block; background: rgba(79,195,161,0.14);
+                       color: #1d8a6b; font-size: 10px; font-weight: 700;
+                       letter-spacing: 0.5px;
+                       border-radius: 4px; padding: 2px 8px; margin-left: 6px; }
+  .points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 680px) { .points-grid { grid-template-columns: 1fr; } }
+  .point-card { background: white; border-radius: 10px; padding: 20px;
+                 border: 1px solid #e2eaf4; box-shadow: 0 1px 6px rgba(10,35,66,0.05); }
+  .point-icon { font-size: 22px; margin-bottom: 8px; }
+  .point-card h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .point-card p { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+  ul.values { background: white; border-radius: 12px; padding: 20px 28px 20px 46px;
+               box-shadow: 0 2px 12px rgba(10,35,66,0.07); border: 1px solid #e2eaf4; }
+  ul.values li { font-size: 14px; padding: 6px 0; }
+  ul.values li::marker { color: var(--teal); }
+  .expo-strip { display: flex; gap: 14px; flex-wrap: wrap; }
+  .expo-card { flex: 1; min-width: 220px; background: white; border-left: 4px solid var(--teal);
+                border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 6px rgba(10,35,66,0.05);
+                border-top: 1px solid #e2eaf4; border-right: 1px solid #e2eaf4;
+                border-bottom: 1px solid #e2eaf4; }
+  .expo-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .expo-card .status { font-size: 10px; letter-spacing: 0.5px;
+                        color: var(--teal); font-weight: 700; }
+  .expo-card .name { font-size: 13px; color: var(--text); margin-top: 3px; }
+  .expo-card .photo-note { font-size: 11px; color: var(--muted); font-style: normal;
+                            margin-top: 4px; }
+  .expo-thumb { flex-shrink: 0; }
+  .expo-thumb img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px;
+                     display: block; border: 1px solid #e2eaf4; }
+  .cta { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+          border-radius: 12px; padding: 32px 28px; margin-top: 40px; text-align: center; }
+  .cta h2 { color: white; font-size: 22px; margin-bottom: 8px; }
+  .cta p { color: #b8d4ef; font-size: 14px; margin-bottom: 18px; }
+  .cta a.button { display: inline-block; background: var(--teal); color: var(--navy);
+                   font-weight: 700; font-size: 15px; padding: 13px 34px; border-radius: 8px;
+                   text-decoration: none; }
+  .contact { margin-top: 22px; font-size: 13px; color: #b8d4ef; line-height: 1.8; }
+  .contact a { color: var(--teal); text-decoration: none; }
+  .footer { text-align: center; font-size: 11px; color: var(--muted); padding: 18px; }
+  @media (max-width: 640px) {
+    .header { padding: 24px 16px 20px; }
+    .header h1 { font-size: 28px; }
+    .tagline { font-size: 13px; }
+    .page { padding: 24px 16px 48px; }
+    .action-row { flex-direction: column; }
+    .sample-card-mini { min-width: unset; }
+    .img-card { min-width: 100%; }
+    .expo-card { min-width: 100%; }
+    .cta { padding: 24px 20px; }
+    .cta h2 { font-size: 18px; }
+    .intro-card h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header"><div class="header-inner">
+  <div>
+    <div class="brand-label">Duralogic (Holding) Ltd</div>
+    <h1>Chill<span>Vest</span></h1>
+    <div class="edition">パーソナル冷却ベスト</div>
+    <p class="tagline">産業労働者、消防・救急隊員、そして過酷な暑さの中で働くすべての人のために設計された装着型パーソナル冷却ベスト。氷・ホース・冷凍サイクル不要で、一日中、体幹を冷却します。</p>
+  </div>
+  <div class="header-badge-group">
+    <div class="header-badge"><span class="check">&#10003;</span> RoHS認証取得</div>
+    <div class="header-badge"><span class="check">&#10003;</span> CE / EMC認証取得</div>
+    <div class="header-badge"><span class="check">&#10003;</span> GHS / REACH MSDS</div>
+  </div>
+</div></div>
+
+<div class="cert-strip"><div class="cert-strip-inner">
+  <div class="cert-item"><span class="dot"></span>モデル: ChillVest-C01</div>
+  <div class="cert-item"><span class="dot"></span>冷却剤: CB2026</div>
+  <div class="cert-item"><span class="dot"></span>電源: DC 5V USB</div>
+  <div class="cert-item"><span class="dot"></span>グローバル代表: フェニックス（米国）</div>
+</div></div>
+
+<div class="page">
+
+  <div class="card intro-card">
+    <h2>過酷な暑さに、一日中続くパーソナル冷却</h2>
+    <p>ChillVest（チルベスト）は、冷却ジェルセルを身体に密着させ、数時間にわたって冷たさを安定して放出する装着型パーソナル冷却システムです。38&deg;C / 100&deg;F以上の環境でも、作業者の体幹温度を安全な範囲に保ちます。ColdBank（コールドバンク）インサートが温まったら数秒で新しいものと交換できるため、シフト中に冷凍庫へ戻る必要がなく、衣類が濡れることも、作業を中断することもありません。既存の作業着や安全プロトコルにも自然に適合します。</p>
+  </div>
+
+  <div class="action-row">
+    <a class="video-card" href="https://drive.google.com/file/d/1yKCWeUDbsyA_6mFEs7U-3kfguiNkogm5/view" target="_blank" rel="noopener">
+      <div class="play-btn"></div>
+      <div>
+        <h3>ChillVestの実演 &mdash; 製品ショートデモ</h3>
+        <p>ベストの操作、ColdBankのセットアップ、実際の着用の様子。クリックして再生。</p>
+      </div>
+    </a>
+    <a class="sample-card-mini" href="https://docs.google.com/forms/d/1xP78a-Gph2JwS-bNTbZkW42qcwMo9A8t8uYNvN8mjto/viewform" target="_blank" rel="noopener">
+      <h3>サンプルを請求</h3>
+      <p>無料評価ユニット &mdash; 迅速に発送</p>
+    </a>
+  </div>
+
+  <div class="section-title">製品</div>
+  <div class="img-row">
+    <div class="img-card"><a href="img/p2_img1_335x328.jpeg" target="_blank" rel="noopener"><img src="img/p2_img1_335x328.jpeg" alt="ColdBank冷却キャニスター — 円筒型を表示、角型・平型バリエーションもご用意。"></a><p>ColdBank冷却キャニスター — 角型・平型バリエーションもご用意。</p></div>
+    <div class="img-card"><a href="img/coldbank_positions.jpg" target="_blank" rel="noopener"><img src="img/coldbank_positions.jpg" alt="ColdBankキャニスターの装着位置 — 前面・背面・側面（脇）。"></a><p>ColdBankの装着位置 — 前面・背面・側面。</p></div>
+    <div class="img-card"><a href="img/vest_weight.jpg" target="_blank" rel="noopener"><img src="img/vest_weight.jpg" alt="ベルト装着型ColdBank搭載のChillVest — 1.4 kg / 3 lb。"></a><p>ベルト装着型ColdBank搭載のChillVest — 1.4 kg / 3 lb。</p></div>
+    <div class="img-card"><a href="img/cooling_effect.jpg" target="_blank" rel="noopener"><img src="img/cooling_effect.jpg" alt="ChillVestの冷却効果 — 使用時の温度差。"></a><p>冷却効果 — 使用時の温度差。</p></div>
+  </div>
+
+  <div class="section-title">仕組みと主要仕様</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>仕組み</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>事前冷却</h4><p>ColdBankセルをシフト前に標準的な冷凍庫またはアイスクーラーで1&ndash;2時間冷却します。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>着用</h4><p>ベストを着用します。ジェルセルは薄い快適素材を挟んで身体に密着します。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>持続冷却</h4><p>体熱が冷たいジェルに伝わり均一に吸収されます。急激な冷えがなく、数時間にわたり安定して冷却します。</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><h4>止まらずに交換</h4><p>ColdBankが温まったら数秒で新しいものに交換。シフト中に冷凍庫へ戻ることなく一日中冷却。</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><h4>流体循環</h4><p>USB給電のDC 5Vモーターが冷却液をベスト内に循環させ、すべての冷却ゾーンに均一な温度分布をもたらします。</p></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>主要仕様</h3>
+      <table class="specs-table"><tbody>
+        <tr><td>モデル</td><td>ChillVest-C01</td></tr>
+        <tr><td>製造元</td><td>Duralogic (Holding) Limited &mdash; グローバル代表 フェニックス（米国アリゾナ州）</td></tr>
+        <tr><td>重量（着用時）</td><td>1.4 kg / 3 lb</td></tr>
+        <tr><td>冷却剤</td><td>CB2026（ポリアクリル酸ナトリウム＋プロピレングリコール、50/50）</td></tr>
+        <tr><td>物理的状態</td><td>無色・無臭のジェル &mdash; 密度 1.11 g/mL</td></tr>
+        <tr><td>沸点</td><td>170&ndash;180&deg;C / 338&ndash;356&deg;F</td></tr>
+        <tr><td>引火性</td><td>引火点 &gt;100&deg;C / &gt;212&deg;F（不燃性）</td></tr>
+        <tr><td>モーター電源</td><td>DC 5V、USB充電式、低騒音</td></tr>
+        <tr><td>稼働時間</td><td>ColdBank交換により一日中 &mdash; 2&ndash;3時間の再凍結サイクル不要</td></tr>
+        <tr><td>対象環境</td><td>35&deg;C / 95&deg;F以上</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="section-title">認証</div>
+  <div class="card">
+    <table class="cert-table">
+      <thead><tr>
+        <th>証明書</th><th>規格</th><th>証明書番号</th>
+        <th>発行日</th><th>内容</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>RoHS証明書<span class="held">取得済</span></td><td>EU指令 2011/65/EU</td><td>HTT2026041001R</td><td>2026年5月19日</td><td>全55材料コンポーネントが10種類の制限有害物質の基準に適合。</td></tr>
+        <tr><td>EMC / CE証明書<span class="held">取得済</span></td><td>EU指令 2014/30/EU</td><td>HTT2026041001E</td><td>2026年4月22日</td><td>電子ユニットがエミッション・イミュニティ試験に合格、CEマーキングを認可。</td></tr>
+        <tr><td>MSDS &mdash; CB2026冷却剤<span class="held">取得済</span></td><td>GHS / REACH</td><td>&mdash;</td><td>2026年4月24日</td><td>米国税関・運送業者・OSHA HazComプログラムで受理される安全データシート。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">主な特長</div>
+  <div class="points-grid">
+    <div class="point-card"><div class="point-icon">&#128167;</div><h4>作業を妨げない</h4><p>ホース・滴る氷・濡れた衣類なし。作業者はシフト中ずっと乾いた状態で快適に動けます。</p></div>
+    <div class="point-card"><div class="point-icon">&#9851;</div><h4>再利用・充電可能</h4><p>使い捨て冷却製品に比べてランニングコストが低い。標準的な冷凍庫やクーラーで再充電。</p></div>
+    <div class="point-card"><div class="point-icon">&#128263;</div><h4>静音動作</h4><p>低騒音モーターで、接客業務・オフィス・騒音に敏感な環境にも適しています。</p></div>
+    <div class="point-card"><div class="point-icon">&#129514;</div><h4>安全な素材</h4><p>食品に近い成分。不燃性・非発がん性、カリフォルニア州プロポジション65適合。MSDS完備。</p></div>
+    <div class="point-card"><div class="point-icon">&#128203;</div><h4>認証取得</h4><p>EUのRoHSおよびCE認証が、厳格な材料安全性と電子機器製造基準を実証。</p></div>
+    <div class="point-card"><div class="point-icon">&#127959;</div><h4>多様な用途</h4><p>建設、石油・ガス、農業、倉庫、イベント、軍事、緊急対応。</p></div>
+  </div>
+
+  <div class="section-title">ChillVestが選ばれる理由</div>
+  <ul class="values">
+    <li>一日中冷却：交換式ColdBank 対 2&ndash;3時間で切れて冷凍庫が必要な相変化ベスト</li>
+    <li>着用重量3 lb &mdash; ハーネス・難燃服・工具の邪魔をしません</li>
+    <li>滴る氷やホースなし。作業者は乾いた清潔な状態を保てます</li>
+    <li>密閉空間や接客業務向けの静かなUSB充電式流体循環ユニット</li>
+    <li>パイロットチーム向けの無料評価サンプルプログラム</li>
+  </ul>
+
+  <div class="section-title">出展情報</div>
+  <div class="expo-strip">
+    <div class="expo-card"><div><div class="status">出展済</div><div class="name">大阪・関西万博 2026 &mdash; 日本・大阪</div><div class="photo-note">写真：ブースK1-17、設営中に撮影</div></div><a class="expo-thumb" href="img/osaka_expo_2026.jpg" target="_blank" rel="noopener" title="大阪・関西万博 2026 のDuralogicブースK1-17、設営中に撮影。"><img src="img/osaka_expo_2026.jpg" alt="大阪・関西万博 2026 のDuralogicブースK1-17、設営中に撮影。"></a></div>
+    <div class="expo-card"><div><div class="status">出展予定</div><div class="name">NSC Safety Congress &amp; Expo 2026 &mdash; 9月14&ndash;16日、米国インディアナ州インディアナポリス &middot; ブース#409</div></div></div>
+    <div class="expo-card"><div><div class="status">出展予定</div><div class="name">TOOL JAPAN 2026 &mdash; 10月7&ndash;9日、幕張メッセ（千葉）</div></div></div>
+  </div>
+
+  <div class="cta">
+    <h2>評価サンプルを請求</h2>
+    <p>チームと用途をお知らせください &mdash; サンプルと資料を迅速に発送します。</p>
+    <a class="button" href="https://docs.google.com/forms/d/1xP78a-Gph2JwS-bNTbZkW42qcwMo9A8t8uYNvN8mjto/viewform" target="_blank" rel="noopener">サンプルを請求</a>
+    <div class="contact">
+      Edward Wu &middot; グローバル代表 | Duralogic (Holding) Ltd<br>
+      フェニックス、アリゾナ州 &middot; 米国 &middot; 携帯: +1 (469) 515-2507<br>
+      <a href="mailto:edward.duralogic@gmail.com">edward.duralogic@gmail.com</a> &middot;
+      <a href="https://www.duranheat.com">www.duranheat.com</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">&copy; 2026 Duralogic (Holding) Ltd &mdash; ChillVest&trade; パーソナル冷却システム</div>
+
+</body>
+</html>
